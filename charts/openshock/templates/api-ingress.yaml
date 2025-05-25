@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Chart.Name }}-api-ingress
+  name: {{ .Release.Name }}-api-ingress
     {{- with .Values.api.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -19,7 +19,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Chart.Name }}-api-service
+                name: {{ .Release.Name }}-api-service
                 port:
                   number: 80
     {{- end }}

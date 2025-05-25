@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}-redis-deployment
+  name: {{ .Release.Name }}-redis-deployment
   labels:
     open.shock.toys/service: redis
 spec:

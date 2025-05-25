@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ .Chart.Name }}-frontend-middleware-osr-c
+  name: {{ .Release.Name }}-frontend-middleware-osr-c
 spec:
   redirectRegex:
     regex:  ^{{ .Values.links.frontend.shortUrl }}/c/(.*)
@@ -10,7 +10,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ .Chart.Name }}-frontend-middleware-osr-l
+  name: {{ .Release.Name }}-frontend-middleware-osr-l
 spec:
   redirectRegex:
     regex:  ^{{ .Values.links.frontend.shortUrl }}/l/(.*)
@@ -19,7 +19,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ .Chart.Name }}-frontend-middleware-osr-t
+  name: {{ .Release.Name }}-frontend-middleware-osr-t
 spec:
   redirectRegex:
     regex:  ^{{ .Values.links.frontend.shortUrl }}/t/(.*)
