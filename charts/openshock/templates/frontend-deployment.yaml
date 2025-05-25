@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - env:
-            - name: OPENSHOCK_API_URL
-              value: {{ .Values.links.api.baseUrl }}
-            - name: OPENSHOCK_NAME
-              value: {{ .Values.frontend.siteName }}
-            - name: OPENSHOCK_SHARE_URL
-              value: {{ .Values.links.frontend.shortUrl }}
-            - name: OPENSHOCK_URL
-              value: {{ .Values.links.frontend.domain }}
+          - name: OPENSHOCK_API_URL
+            value: {{ .Values.links.api.baseUrl }}
+          - name: OPENSHOCK_NAME
+            value: {{ .Values.frontend.siteName }}
+          - name: OPENSHOCK_SHARE_URL
+            value: {{ .Values.links.frontend.shortUrl }}
+          - name: OPENSHOCK_URL
+            value: {{ .Values.links.frontend.domain }}
           image: ghcr.io/openshock/webui:latest
           name: webui
           ports:

@@ -16,56 +16,56 @@ spec:
     spec:
       containers:
         - env:
-            - name: OPENSHOCK__DB__CONN
-              value: Host={{ include "openshock.fullname" . }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
-            - name: OPENSHOCK__FRONTEND__BASEURL
-              value: {{ .Values.links.frontend.baseUrl }}
-            - name: OPENSHOCK__FRONTEND__COOKIEDOMAIN
-              value: {{ .Values.links.frontend.cookieDomain }}
-            - name: OPENSHOCK__FRONTEND__SHORTURL
-              value: {{ .Values.links.frontend.shortUrl }}
-            - name: OPENSHOCK__REDIS__HOST
-              value: {{ include "openshock.fullname" . }}-redis
-            # turnstile
-            - name: OPENSHOCK__TURNSTILE__ENABLE
-              value: {{ .Values.api.turnstile.enable }}
-            {{ if .Values.api.turnstile.enable }}
-            - name: OPENSHOCK__TURNSTILE__SITEKEY
-              value: {{ .Values.api.turnstile.siteKey }}
-            - name: OPENSHOCK__MAIL__TYPE
-              value: {{ .Values.api.turnstile.secretKey }}
-            {{ end }}
-            # email: generic
-            - name: OPENSHOCK__MAIL__SENDER__EMAIL
-              value: {{ .Values.api.mail.sender.email }}
-            - name: OPENSHOCK__MAIL__SENDER__NAME
-              value: {{ .Values.api.mail.sender.name }}
-            - name: OPENSHOCK__MAIL__TYPE
-              value: {{ .Values.api.mail.type }}
-            # email: mailjet
-            {{ if eq .Values.api.turnstile.type "MAILJET" }}
-            - name: OPENSHOCK__MAIL__MAILJET__KEY
-              value: {{ .Values.api.mail.mailjet.key }}
-            - name: OPENSHOCK__MAIL__MAILJET__SECRET
-              value: {{ .Values.api.mail.mailjet.secret }}
-            - name: OPENSHOCK__MAIL__MAILJET__TEMPLATE__PASSWORDRESET
-              value: {{ .Values.api.mail.mailjet.template.passwordReset }}
-            {{ end }}
-            # email: smtp
-            {{ if eq .Values.api.turnstile.type "SMTP" }}
-            - name: OPENSHOCK__MAIL__SMTP__HOST
-              value: {{ .Values.api.mail.smtp.host }}
-            - name: OPENSHOCK__MAIL__SMTP__PORT
-              value: {{ .Values.api.mail.smtp.port }}
-            - name: OPENSHOCK__MAIL__SMTP__USERNAME
-              value: {{ .Values.api.mail.smtp.username }}
-            - name: OPENSHOCK__MAIL__SMTP__PASSWORD
-              value: {{ .Values.api.mail.smtp.password }}
-            - name: OPENSHOCK__MAIL__SMTP__ENABLESSL
-              value: {{ .Values.api.mail.smtp.ssl.enabled }}
-            - name: OPENSHOCK__MAIL__SMTP__VERIFYCERTIFICATE
-              value: {{ .Values.api.mail.smtp.ssl.verifyCert }}
-            {{ end }}
+          - name: OPENSHOCK__DB__CONN
+            value: Host={{ include "openshock.fullname" . }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
+          - name: OPENSHOCK__FRONTEND__BASEURL
+            value: {{ .Values.links.frontend.baseUrl }}
+          - name: OPENSHOCK__FRONTEND__COOKIEDOMAIN
+            value: {{ .Values.links.frontend.cookieDomain }}
+          - name: OPENSHOCK__FRONTEND__SHORTURL
+            value: {{ .Values.links.frontend.shortUrl }}
+          - name: OPENSHOCK__REDIS__HOST
+            value: {{ include "openshock.fullname" . }}-redis
+          # turnstile
+          - name: OPENSHOCK__TURNSTILE__ENABLE
+            value: {{ .Values.api.turnstile.enable }}
+          {{ if .Values.api.turnstile.enable }}
+          - name: OPENSHOCK__TURNSTILE__SITEKEY
+            value: {{ .Values.api.turnstile.siteKey }}
+          - name: OPENSHOCK__MAIL__TYPE
+            value: {{ .Values.api.turnstile.secretKey }}
+          {{ end }}
+          # email: generic
+          - name: OPENSHOCK__MAIL__SENDER__EMAIL
+            value: {{ .Values.api.mail.sender.email }}
+          - name: OPENSHOCK__MAIL__SENDER__NAME
+            value: {{ .Values.api.mail.sender.name }}
+          - name: OPENSHOCK__MAIL__TYPE
+            value: {{ .Values.api.mail.type }}
+          # email: mailjet
+          {{ if eq .Values.api.turnstile.type "MAILJET" }}
+          - name: OPENSHOCK__MAIL__MAILJET__KEY
+            value: {{ .Values.api.mail.mailjet.key }}
+          - name: OPENSHOCK__MAIL__MAILJET__SECRET
+            value: {{ .Values.api.mail.mailjet.secret }}
+          - name: OPENSHOCK__MAIL__MAILJET__TEMPLATE__PASSWORDRESET
+            value: {{ .Values.api.mail.mailjet.template.passwordReset }}
+          {{ end }}
+          # email: smtp
+          {{ if eq .Values.api.turnstile.type "SMTP" }}
+          - name: OPENSHOCK__MAIL__SMTP__HOST
+            value: {{ .Values.api.mail.smtp.host }}
+          - name: OPENSHOCK__MAIL__SMTP__PORT
+            value: {{ .Values.api.mail.smtp.port }}
+          - name: OPENSHOCK__MAIL__SMTP__USERNAME
+            value: {{ .Values.api.mail.smtp.username }}
+          - name: OPENSHOCK__MAIL__SMTP__PASSWORD
+            value: {{ .Values.api.mail.smtp.password }}
+          - name: OPENSHOCK__MAIL__SMTP__ENABLESSL
+            value: {{ .Values.api.mail.smtp.ssl.enabled }}
+          - name: OPENSHOCK__MAIL__SMTP__VERIFYCERTIFICATE
+            value: {{ .Values.api.mail.smtp.ssl.verifyCert }}
+          {{ end }}
           image: ghcr.io/openshock/api:{{ .Release.AppVersion }}
           name: api
           ports:
