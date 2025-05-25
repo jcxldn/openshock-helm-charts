@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openshock.fullname" . }}-cron-deployment
+  name: {{ include "openshock.fullname" . }}-cron
   labels:
     open.shock.toys/service: cron
 spec:

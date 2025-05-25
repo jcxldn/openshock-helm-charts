@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openshock.fullname" . }}-redis-deployment
+  name: {{ include "openshock.fullname" . }}-redis
   labels:
     open.shock.toys/service: redis
 spec:

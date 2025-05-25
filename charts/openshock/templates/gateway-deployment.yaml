@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openshock.fullname" . }}-gateway-deployment
+  name: {{ include "openshock.fullname" . }}-gateway
   labels:
     open.shock.toys/service: gateway
 spec:

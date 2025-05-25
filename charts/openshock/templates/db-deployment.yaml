@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openshock.fullname" . }}-db-deployment
+  name: {{ include "openshock.fullname" . }}-db
   labels:
     open.shock.toys/service: postgres
 spec:
