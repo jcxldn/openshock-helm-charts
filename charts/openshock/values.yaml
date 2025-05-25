@@ -29,7 +29,7 @@ api:
     annotations: []
     className: traefik
     hosts:
-      - api.openshock.local
+      - hosts: api.openshock.local
     # tls: []
     tls:
       - secretName: api-ingress-secret
@@ -61,7 +61,7 @@ frontend:
     annotations: []
     className: traefik
     hosts:
-      - openshock.local
+      - hosts: openshock.local
     # tls: []
     tls:
       - secretName: frontend-ingress-secret
@@ -77,7 +77,7 @@ gateway:
     annotations: []
     className: traefik
     hosts:
-      - gateway.openshock.local
+      - host: gateway.openshock.local
     # tls: []
     tls:
       - secretName: gateway-ingress-secret
