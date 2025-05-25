@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: {{ include "openshock.fullname" . }}-frontend
   labels:
-    open.shock.toys/service: webui
+    open.shock.toys/service: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      open.shock.toys/service: webui
+      open.shock.toys/service: frontend
   template:
     metadata:
       labels:
-        open.shock.toys/service: webui
+        open.shock.toys/service: frontend
     spec:
       containers:
         - env:
@@ -25,7 +25,7 @@ spec:
           - name: OPENSHOCK_URL
             value: {{ .Values.links.frontend.domain }}
           image: ghcr.io/openshock/webui:latest
-          name: webui
+          name: frontend
           ports:
             - containerPort: 80
               protocol: TCP
