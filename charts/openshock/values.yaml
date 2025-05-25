@@ -26,7 +26,7 @@ api:
     siteKey: ""
     secretKey: ""
   ingress:
-    annotations: []
+    annotations: {}
     className: traefik
     hosts:
       - hosts: api.openshock.local
@@ -58,7 +58,7 @@ api:
 frontend:
   siteName: OpenShock
   ingress:
-    annotations: []
+    annotations: {}
     className: traefik
     hosts:
       - hosts: openshock.local
@@ -74,7 +74,7 @@ gateway:
   redis:
     host: redis
   ingress:
-    annotations: []
+    annotations: {}
     className: traefik
     hosts:
       - host: gateway.openshock.local
