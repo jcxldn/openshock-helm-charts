@@ -1,0 +1,27 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-frontend-middleware-osr-c
+spec:
+  redirectRegex:
+    regex:  ^{{ .Values.links.frontend.shortUrl }}/c/(.*)
+    replacement: {{ .Values.links.frontend.baseUrl }}/#/public/proxy/shares/code/$1
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-frontend-middleware-osr-l
+spec:
+  redirectRegex:
+    regex:  ^{{ .Values.links.frontend.shortUrl }}/l/(.*)
+    replacement: {{ .Values.links.frontend.baseUrl }}/#/public/proxy/shares/links/$1
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-frontend-middleware-osr-t
+spec:
+  redirectRegex:
+    regex:  ^{{ .Values.links.frontend.shortUrl }}/t/(.*)
+    replacement: {{ .Values.links.frontend.baseUrl }}/#/public/proxy/token/$1
+---

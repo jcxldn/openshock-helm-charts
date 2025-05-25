@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-frontend-deployment
+  labels:
+    open.shock.toys/service: webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      open.shock.toys/service: webui
+  template:
+    metadata:
+      labels:
+        open.shock.toys/service: webui
+    spec:
+      containers:
+        - env:
+            - name: OPENSHOCK_API_URL
+              value: {{ .Values.links.api.baseUrl }}
+            - name: OPENSHOCK_NAME
+              value: {{ .Values.frontend.siteName }}
+            - name: OPENSHOCK_SHARE_URL
+              value: {{ .Values.links.frontend.shortUrl }}
+            - name: OPENSHOCK_URL
+              value: {{ .Values.links.frontend.domain }}
+          image: ghcr.io/openshock/webui:latest
+          name: webui
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always

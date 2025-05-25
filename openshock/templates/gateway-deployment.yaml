@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-gateway-deployment
+  labels:
+    open.shock.toys/service: gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      open.shock.toys/service: gateway
+  template:
+    metadata:
+      labels:
+        open.shock.toys/service: gateway
+    spec:
+      containers:
+      - name: db
+        env:
+        - name: OPENSHOCK__DB__CONN
+          value: Host={{ .Release.Name }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
+        - name: OPENSHOCK__LCG__COUNTRYCODE
+          value: {{ .Values.gateway.countryCode }}
+        - name: OPENSHOCK__LCG__FQDN
+          value: {{ .Values.gateway.fqdn }}
+        image: {{ .Values.gateway.image }}
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always

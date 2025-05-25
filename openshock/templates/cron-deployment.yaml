@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-cron-deployment
+  labels:
+    open.shock.toys/service: cron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      open.shock.toys/service: cron
+  template:
+    metadata:
+      labels:
+        open.shock.toys/service: cron
+    spec:
+      containers:
+      - name: cron
+        env:
+        - name: OPENSHOCK__DB__CONN
+          value: Host={{ .Release.Name }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
+        - name: OPENSHOCK__REDIS__HOST
+          value: {{ .Release.Name }}-redis
+        image: {{ .Values.cron.image }}
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
