@@ -52,7 +52,7 @@ spec:
               value: {{ .Values.api.mail.mailjet.template.passwordReset }}
             {{ end }}
             # email: smtp
-            {{ eq .Values.api.turnstile.type "SMTP" }}
+            {{ if eq .Values.api.turnstile.type "SMTP" }}
             - name: OPENSHOCK__MAIL__SMTP__HOST
               value: {{ .Values.api.mail.smtp.host }}
             - name: OPENSHOCK__MAIL__SMTP__PORT
