@@ -29,12 +29,12 @@ spec:
             # turnstile
             - name: OPENSHOCK__TURNSTILE__ENABLE
               value: {{ .Values.api.turnstile.enable }}
-            {{- if .Values.api.turnstile.enable }}
+            {{ if .Values.api.turnstile.enable }}
             - name: OPENSHOCK__TURNSTILE__SITEKEY
               value: {{ .Values.api.turnstile.siteKey }}
             - name: OPENSHOCK__MAIL__TYPE
               value: {{ .Values.api.turnstile.secretKey }}
-            {{- end }}
+            {{ end }}
             # email: generic
             - name: OPENSHOCK__MAIL__SENDER__EMAIL
               value: {{ .Values.api.mail.sender.email }}
@@ -43,16 +43,16 @@ spec:
             - name: OPENSHOCK__MAIL__TYPE
               value: {{ .Values.api.mail.type }}
             # email: mailjet
-            {{- eq .Values.api.turnstile.type "MAILJET" }}
+            {{ if eq .Values.api.turnstile.type "MAILJET" }}
             - name: OPENSHOCK__MAIL__MAILJET__KEY
               value: {{ .Values.api.mail.mailjet.key }}
             - name: OPENSHOCK__MAIL__MAILJET__SECRET
               value: {{ .Values.api.mail.mailjet.secret }}
             - name: OPENSHOCK__MAIL__MAILJET__TEMPLATE__PASSWORDRESET
               value: {{ .Values.api.mail.mailjet.template.passwordReset }}
-            {{- end }}
+            {{ end }}
             # email: smtp
-            {{- eq .Values.api.turnstile.type "SMTP" }}
+            {{ eq .Values.api.turnstile.type "SMTP" }}
             - name: OPENSHOCK__MAIL__SMTP__HOST
               value: {{ .Values.api.mail.smtp.host }}
             - name: OPENSHOCK__MAIL__SMTP__PORT
@@ -65,7 +65,7 @@ spec:
               value: {{ .Values.api.mail.smtp.ssl.enabled }}
             - name: OPENSHOCK__MAIL__SMTP__VERIFYCERTIFICATE
               value: {{ .Values.api.mail.smtp.ssl.verifyCert }}
-            {{- end }}
+            {{ end }}
           image: ghcr.io/openshock/api:{{ .Release.AppVersion }}
           name: api
           ports:
