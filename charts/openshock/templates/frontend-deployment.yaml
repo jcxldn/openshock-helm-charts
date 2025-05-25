@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-frontend-deployment
+  name: {{ .Chart.Name }}-frontend-deployment
   labels:
     open.shock.toys/service: webui
 spec:

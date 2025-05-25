@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-api-deployment
+  name: {{ .Chart.Name }}-api-deployment
   labels:
     open.shock.toys/service: api
 spec:
@@ -17,7 +17,7 @@ spec:
       containers:
         - env:
             - name: OPENSHOCK__DB__CONN
-              value: Host={{ .Release.Name }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
+              value: Host={{ .Chart.Name }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
             - name: OPENSHOCK__FRONTEND__BASEURL
               value: {{ .Values.links.frontend.baseUrl }}
             - name: OPENSHOCK__FRONTEND__COOKIEDOMAIN
@@ -25,7 +25,7 @@ spec:
             - name: OPENSHOCK__FRONTEND__SHORTURL
               value: {{ .Values.links.frontend.shortUrl }}
             - name: OPENSHOCK__REDIS__HOST
-              value: {{ .Release.Name }}-redis
+              value: {{ .Chart.Name }}-redis
             # turnstile
             - name: OPENSHOCK__TURNSTILE__ENABLE
               value: {{ .Values.api.turnstile.enable }}
