@@ -35,9 +35,9 @@ spec:
           initialDelaySeconds: 20
           periodSeconds: 30
           timeoutSeconds: 5
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgres-data
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-data
       restartPolicy: Always
       volumes:
         - name: postgres-data

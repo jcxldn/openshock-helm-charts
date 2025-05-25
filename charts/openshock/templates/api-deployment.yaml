@@ -28,7 +28,7 @@ spec:
             value: {{ include "openshock.fullname" . }}-redis
           # turnstile
           - name: OPENSHOCK__TURNSTILE__ENABLE
-            value: {{ .Values.api.turnstile.enable }}
+            value: {{ .Values.api.turnstile.enable | quote }}
           {{ if .Values.api.turnstile.enable }}
           - name: OPENSHOCK__TURNSTILE__SITEKEY
             value: {{ .Values.api.turnstile.siteKey }}
@@ -49,22 +49,22 @@ spec:
           - name: OPENSHOCK__MAIL__MAILJET__SECRET
             value: {{ .Values.api.mail.mailjet.secret }}
           - name: OPENSHOCK__MAIL__MAILJET__TEMPLATE__PASSWORDRESET
-            value: {{ .Values.api.mail.mailjet.template.passwordReset }}
+            value: {{ .Values.api.mail.mailjet.template.passwordReset | quote }}
           {{ end }}
           # email: smtp
           {{ if eq .Values.api.mail.type "SMTP" }}
           - name: OPENSHOCK__MAIL__SMTP__HOST
             value: {{ .Values.api.mail.smtp.host }}
           - name: OPENSHOCK__MAIL__SMTP__PORT
-            value: {{ .Values.api.mail.smtp.port }}
+            value: {{ .Values.api.mail.smtp.port | quote}}
           - name: OPENSHOCK__MAIL__SMTP__USERNAME
             value: {{ .Values.api.mail.smtp.username }}
           - name: OPENSHOCK__MAIL__SMTP__PASSWORD
             value: {{ .Values.api.mail.smtp.password }}
           - name: OPENSHOCK__MAIL__SMTP__ENABLESSL
-            value: {{ .Values.api.mail.smtp.ssl.enabled }}
+            value: {{ .Values.api.mail.smtp.ssl.enabled | quote }}
           - name: OPENSHOCK__MAIL__SMTP__VERIFYCERTIFICATE
-            value: {{ .Values.api.mail.smtp.ssl.verifyCert  }}
+            value: {{ .Values.api.mail.smtp.ssl.verifyCert | quote  }}
           {{ end }}
           image: {{ printf "ghcr.io/openshock/api:%s" .Release.AppVersion }}
           name: api
