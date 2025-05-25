@@ -1,5 +1,9 @@
 replicaCount: 1
 
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
 db:
   image: postgres:16
   database: openshock

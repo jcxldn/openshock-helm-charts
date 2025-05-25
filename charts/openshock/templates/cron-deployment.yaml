@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-cron-deployment
+  name: {{ include "openshock.fullname" . }}-cron-deployment
   labels:
     open.shock.toys/service: cron
 spec:
@@ -18,9 +18,9 @@ spec:
       - name: cron
         env:
         - name: OPENSHOCK__DB__CONN
-          value: Host={{ .Release.Name }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
+          value: Host={{ include "openshock.fullname" . }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
         - name: OPENSHOCK__REDIS__HOST
-          value: {{ .Release.Name }}-redis
+          value: {{ include "openshock.fullname" . }}-redis
         image: ghcr.io/openshock/cron:{{ .Release.AppVersion }}
         ports:
         - containerPort: 80
