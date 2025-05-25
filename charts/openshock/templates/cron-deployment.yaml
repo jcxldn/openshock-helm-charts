@@ -21,7 +21,7 @@ spec:
           value: Host={{ include "openshock.fullname" . }}-db;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
         - name: OPENSHOCK__REDIS__HOST
           value: {{ include "openshock.fullname" . }}-redis
-        image: {{ printf "ghcr.io/openshock/cron:%s" .Release.AppVersion }}
+        image: {{ printf "ghcr.io/openshock/cron:%s" .Chart.AppVersion }}
         ports:
         - containerPort: 80
           protocol: TCP
