@@ -19,7 +19,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "openshock.fullname" . }}-gateway-service
+                name: {{ include "openshock.fullname" $ }}-gateway-service
                 port:
                   number: 80
     {{- end }}
