@@ -23,7 +23,7 @@ spec:
           value: {{ .Values.gateway.countryCode }}
         - name: OPENSHOCK__LCG__FQDN
           value: {{ .Values.gateway.fqdn }}
-        image: {{ .Values.gateway.image }}
+        image: ghcr.io/openshock/live-control-gateway:{{ .Release.AppVersion }}
         ports:
         - containerPort: 80
           protocol: TCP

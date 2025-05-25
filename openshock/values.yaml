@@ -65,7 +65,6 @@ frontend:
           - openshock.local
 
 gateway:
-  image: ghcr.io/openshock/live-control-gateway:latest
   countryCode: DE
   fqdn: gateway.openshock.local
   redis:
@@ -80,6 +79,3 @@ gateway:
       - secretName: gateway-ingress-secret
         hosts:
           - gateway.openshock.local
-
-cron:
-  image: ghcr.io/openshock/cron:master
