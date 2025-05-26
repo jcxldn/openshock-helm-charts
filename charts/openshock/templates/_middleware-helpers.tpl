@@ -9,6 +9,6 @@
 {{- end }}
 
 {{- define "openshock.annotations.standard.frontend-ingress" -}}
-traefik.ingress.kubernetes.io/router.middlewares: {{ include "openshock.prefix.frontendMiddleware" $ }}-osr-c {{ include "openshock.prefix.frontendMiddleware" $ }}-osr-s {{ include "openshock.prefix.frontendMiddleware" $ }}-osr-t
+traefik.ingress.kubernetes.io/router.middlewares: {{ include "openshock.prefix.frontendMiddleware" $ }}-osr-c@kubernetescrd {{ include "openshock.prefix.frontendMiddleware" $ }}-osr-s@kubernetescrd {{ include "openshock.prefix.frontendMiddleware" $ }}-osr-t@kubernetescrd
 
 {{- end -}}
