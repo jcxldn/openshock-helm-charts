@@ -13,8 +13,7 @@ metadata:
     {{- $_ := set $annotations $key $new -}}
     {{- end}}
   {{- end }}
-  annotations:
-    {{ $annotations | toYaml }}
+  annotations: {{- $annotations | toYaml | nindent 4 }}
 spec:
   {{- with .Values.frontend.ingress.className }}
   ingressClassName: {{ . }}
