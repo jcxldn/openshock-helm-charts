@@ -2,9 +2,19 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "openshock.fullname" . }}-frontend-ingress
+  {{- $annotations := deepCopy .Values.frontend.ingress.annotations -}}
+  {{- range $key, $value := fromYaml (include "openshock.annotations.standard.frontend-ingress" . ) -}}
+    {{- $existing := get $annotations $key -}}
+    {{- if $existing }}
+    {{- $new := printf "%s,%s" $existing $value -}}
+    {{- $_ := set $annotations $key $new -}}
+    {{- else}}
+    {{- $new := printf $value -}}
+    {{- $_ := set $annotations $key $new -}}
+    {{- end}}
+  {{- end }}
   annotations:
-    {{- $annotations := include "common.tplvalues.merge" (dict "values" (list .Values.frontend.ingress.annotations (include "openshock.annotations.standard.frontend-ingress" $ )) "context" .) }}
-    {{- include "common.tplvalues.render" ( dict "value" $annotations "context" $ ) | nindent 4 }}
+    {{ $annotations | toYaml }}
 spec:
   {{- with .Values.frontend.ingress.className }}
   ingressClassName: {{ . }}
