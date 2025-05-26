@@ -3,6 +3,20 @@ entries:
   openshock:
   - apiVersion: v2
     appVersion: 3.13.0
+    created: "2025-05-26T10:13:45.438333759Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: ~2.31.1
+    description: An open-source platform to control shocking devices over the internet.
+    digest: d0b445e49e32f3afededc76e7da254e0f7cfd4cd421fba0f72e6e8a83e3a4211
+    name: openshock
+    type: application
+    urls:
+    - https://github.com/jcxldn/openshock-helm-charts/releases/download/openshock-0.0.22/openshock-0.0.22.tgz
+    version: 0.0.22
+  - apiVersion: v2
+    appVersion: 3.13.0
     created: "2025-05-26T10:09:27.504537813Z"
     dependencies:
     - name: common
@@ -217,4 +231,4 @@ entries:
     urls:
     - https://github.com/jcxldn/openshock-helm-charts/releases/download/openshock-0.0.1/openshock-0.0.1.tgz
     version: 0.0.1
-generated: "2025-05-26T10:09:27.504688506Z"
+generated: "2025-05-26T10:13:45.438484711Z"
