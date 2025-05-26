@@ -1,11 +1,11 @@
 
 {{- define "openshock.namespacedName" -}}
-{{- printf "%s-%s" .Release.Namespace openshock.fullname  }}
+{{- printf "%s-%s" .Release.Namespace "openshock.fullname"  }}
 {{- end }}
 
 
 {{- define "openshock.prefix.frontendMiddleware" -}}
-{{- printf "%s-frontend-middleware" openshock.namespacedName  }}
+{{- printf "%s-frontend-middleware" "openshock.namespacedName"  }}
 {{- end }}
 
 {{- define "openshock.annotations.standard.frontend-ingress" -}}
