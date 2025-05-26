@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ include "openshock.fullname" . }}-frontend-middleware-osr-c
+  name: {{ include "openshock.prefix.frontendMiddleware" . }}-osr-c
 spec:
   redirectRegex:
     regex:  ^{{ .Values.links.frontend.shortUrl }}/c/(.*)
@@ -10,16 +10,16 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ include "openshock.fullname" . }}-frontend-middleware-osr-l
+  name: {{ include "openshock.prefix.frontendMiddleware" . }}-osr-s
 spec:
   redirectRegex:
-    regex:  ^{{ .Values.links.frontend.shortUrl }}/l/(.*)
+    regex:  ^{{ .Values.links.frontend.shortUrl }}/s/(.*)
     replacement: {{ .Values.links.frontend.baseUrl }}/#/public/proxy/shares/links/$1
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ include "openshock.fullname" . }}-frontend-middleware-osr-t
+  name: {{ include "openshock.prefix.frontendMiddleware" . }}-osr-t
 spec:
   redirectRegex:
     regex:  ^{{ .Values.links.frontend.shortUrl }}/t/(.*)
