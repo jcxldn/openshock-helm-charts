@@ -4,7 +4,7 @@ metadata:
   name: {{ include "openshock.fullname" . }}-frontend-ingress
     {{- with .Values.frontend.ingress.annotations }}
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: {{ include "openshock.fullname" . }}-frontend-middleware-osr-c {{ include "openshock.fullname" . }}-frontend-middleware-osr-l {{ include "openshock.fullname" . }}-frontend-middleware-osr-t
+    traefik.ingress.kubernetes.io/router.middlewares: {{ include "openshock.fullname" $ }}-frontend-middleware-osr-c {{ include "openshock.fullname" $ }}-frontend-middleware-osr-l {{ include "openshock.fullname" $ }}-frontend-middleware-osr-t
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
