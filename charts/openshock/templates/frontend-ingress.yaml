@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "openshock.fullname" . }}-frontend-ingress
-  {{- $annotations := include "common.tplvalues.merge" (dict "values" (list .Values.frontend.ingress.annotations openshock.annotations.standard.frontend-ingress) "context" .) }}
+  {{- $annotations := include "common.tplvalues.merge" (dict "values" (list .Values.frontend.ingress.annotations "openshock.annotations.standard.frontend-ingress") "context" .) }}
   annotations: {{- include "common.tplvalues.render" ( dict "value" $annotations "context" $ ) | nindent 4 }}
   {{- end }}
 spec:
