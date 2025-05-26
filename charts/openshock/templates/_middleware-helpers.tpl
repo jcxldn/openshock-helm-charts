@@ -10,7 +10,7 @@
 
 
 {{- define "openshock.strings.frontend-ingress-middleware" -}}
-{{- printf "%s-osr-%s@kubernetescrd" (include "openshock.namespacedName" .ctx ) .str }}
+{{- printf "%s-frontend-middleware-osr-%s@kubernetescrd" (include "openshock.namespacedName" .ctx ) .str }}
 {{- end }}
 
 {{- define "openshock.annotations.standard.frontend-ingress" -}}
