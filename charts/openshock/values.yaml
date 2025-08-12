@@ -4,6 +4,9 @@ replicaCount: 1
 nameOverride: ""
 fullnameOverride: ""
 
+# nodeselector for deployments excluding gateways
+nodeSelector: {}
+
 db:
   image: postgres:16
   database: openshock
@@ -80,3 +83,4 @@ gateway:
         - gateway.openshock.local
       ingress:
         annotations: {}
+      nodeSelector: {}

@@ -14,6 +14,10 @@ spec:
       labels:
         open.shock.toys/service: postgres
     spec:
+      nodeSelector:
+        {{- range .Values.nodeSelector }}
+        - {{ . | quote }}
+        {{- end }}
       containers:
       - name: db
         env:
@@ -23,6 +27,8 @@ spec:
           value: {{ .Values.db.password }}
         - name: POSTGRES_USER
           value: {{ .Values.db.username }}
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         image: {{ .Values.db.image }}
         ports:
         - containerPort: 5432
