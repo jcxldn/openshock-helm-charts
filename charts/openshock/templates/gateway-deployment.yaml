@@ -1,32 +1,35 @@
+{{- range .Values.gateway.deployments }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openshock.fullname" . }}-gateway
-  labels:
-    open.shock.toys/service: gateway
+  name: {{ include "openshock.fullname" $ }}-gateway-{{ .countryCode | lower }}
 spec:
   replicas: 1
   selector:
     matchLabels:
       open.shock.toys/service: gateway
+      open.shock.toys/region: {{ .countryCode | lower }}
   template:
     metadata:
       labels:
         open.shock.toys/service: gateway
+        open.shock.toys/region: {{ .countryCode | lower }}
     spec:
       containers:
       - name: gateway
         env:
         - name: OPENSHOCK__DB__CONN
-          value: Host={{ include "openshock.fullname" . }}-db-service;Port=5432;Database={{ .Values.db.database }};Username={{ .Values.db.username }};Password={{ .Values.db.password }}
+          value: Host={{ include "openshock.fullname" $ }}-db-service;Port=5432;Database={{ $.Values.db.database }};Username={{ $.Values.db.username }};Password={{ $.Values.db.password }}
         - name: OPENSHOCK__LCG__COUNTRYCODE
-          value: {{ .Values.gateway.countryCode }}
+          value: {{ .countryCode }}
         - name: OPENSHOCK__LCG__FQDN
-          value: {{ .Values.gateway.fqdn }}
+          value: {{ .fqdn }}
         - name: OPENSHOCK__REDIS__HOST
-          value: {{ include "openshock.fullname" . }}-redis-service
-        image: {{ printf "ghcr.io/openshock/live-control-gateway:%s" .Chart.AppVersion }}
+          value: {{ include "openshock.fullname" $ }}-redis-service
+        image: {{ printf "ghcr.io/openshock/live-control-gateway:%s" $.Chart.AppVersion }}
         ports:
         - containerPort: 80
           protocol: TCP
       restartPolicy: Always
+{{- end }}
+---

@@ -1,12 +1,16 @@
+{{- range .Values.gateway.deployments }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "openshock.fullname" . }}-gateway-service
+  name: {{ include "openshock.fullname" . }}-gateway-service-{{ .countryCode | lower }}
 spec:
   type: ClusterIP
   selector:
     open.shock.toys/service: gateway
+    open.shock.toys/region: {{ .countryCode | lower }}
   ports:
     - name: "http"
       port: 80
       targetPort: 80
+{{- end }}
+---

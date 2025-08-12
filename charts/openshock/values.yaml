@@ -69,17 +69,13 @@ frontend:
           - openshock.local
 
 gateway:
-  countryCode: DE
-  fqdn: gateway.openshock.local
   redis:
     host: redis
-  ingress:
-    annotations: {}
-    className: traefik
-    hosts:
-      - host: gateway.openshock.local
-    # tls: []
-    tls:
-      - secretName: gateway-ingress-secret
-        hosts:
-          - gateway.openshock.local
+  deployments:
+    - fqdn: gateway.openshock.local
+      countryCode: DE
+      hosts:
+        - host: gateway.openshock.local
+      ingress:
+        annotations: {}
+        className: traefik
