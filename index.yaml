@@ -3,6 +3,16 @@ entries:
   openshock:
   - apiVersion: v2
     appVersion: 3.13.0
+    created: "2025-08-12T10:58:05.098028726Z"
+    description: An open-source platform to control shocking devices over the internet.
+    digest: 9587af77956f47e51943ee306b701ea200b576573643a769d5a211b4c1cc187a
+    name: openshock
+    type: application
+    urls:
+    - https://github.com/jcxldn/openshock-helm-charts/releases/download/openshock-0.1.5/openshock-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 3.13.0
     created: "2025-08-12T10:53:55.249115337Z"
     description: An open-source platform to control shocking devices over the internet.
     digest: 086c50c1aae81046e67f3e410d4d10bfbcc882517bfd14669c152baaff9e5506
@@ -349,4 +359,4 @@ entries:
     urls:
     - https://github.com/jcxldn/openshock-helm-charts/releases/download/openshock-0.0.1/openshock-0.0.1.tgz
     version: 0.0.1
-generated: "2025-08-12T10:53:55.249443448Z"
+generated: "2025-08-12T10:58:05.098447428Z"
