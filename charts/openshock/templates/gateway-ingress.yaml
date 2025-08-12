@@ -29,6 +29,6 @@ spec:
       - hosts:
         {{ . | quote }}
         secretName: gateway-ingress-{{ $deployment.countryCode | lower }}
-    {{-end }}
+    {{- end }}
 {{- end }}
 ---

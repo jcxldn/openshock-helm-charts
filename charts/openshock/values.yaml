@@ -71,6 +71,8 @@ frontend:
 gateway:
   redis:
     host: redis
+  ingress:
+    className: traefik
   deployments:
     - fqdn: gateway.openshock.local
       countryCode: DE
@@ -78,4 +80,3 @@ gateway:
         - host: gateway.openshock.local
       ingress:
         annotations: {}
-        className: traefik
