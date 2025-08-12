@@ -15,10 +15,7 @@ spec:
         open.shock.toys/service: gateway
         open.shock.toys/region: {{ .countryCode | lower }}
     spec:
-      nodeSelector:
-        {{- range .nodeSelector }}
-        - {{ . | quote }}
-        {{- end }}
+      nodeSelector: {{.nodeSelector }}
       containers:
       - name: gateway
         env:

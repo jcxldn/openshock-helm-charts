@@ -14,10 +14,7 @@ spec:
       labels:
         open.shock.toys/service: postgres
     spec:
-      nodeSelector:
-        {{- range .Values.nodeSelector }}
-        - {{ . | quote }}
-        {{- end }}
+      nodeSelector: {{ .Values.nodeSelector }}
       containers:
       - name: db
         env:
