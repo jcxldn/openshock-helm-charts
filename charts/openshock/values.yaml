@@ -77,6 +77,6 @@ gateway:
     - fqdn: gateway.openshock.local
       countryCode: DE
       hosts:
-        - host: gateway.openshock.local
+        - gateway.openshock.local
       ingress:
         annotations: {}
