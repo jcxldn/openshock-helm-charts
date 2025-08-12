@@ -35,5 +35,5 @@ spec:
         - containerPort: 80
           protocol: TCP
       restartPolicy: Always
-{{- end }}
 ---
+{{- end }}

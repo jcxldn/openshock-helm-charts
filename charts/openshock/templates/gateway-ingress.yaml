@@ -30,5 +30,5 @@ spec:
         - {{ . | quote }}
         secretName: gateway-ingress-{{ $deployment.countryCode | lower }}
     {{- end }}
-{{- end }}
 ---
+{{- end }}
