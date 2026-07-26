@@ -20,15 +20,17 @@ spec:
       {{- end }}
       containers:
         - env:
-          - name: OPENSHOCK_API_URL
-            value: {{ .Values.links.api.baseUrl }}
-          - name: OPENSHOCK_NAME
-            value: {{ .Values.frontend.siteName }}
-          - name: OPENSHOCK_SHARE_URL
+          - name: PUBLIC_SITE_URL
+            value: {{ .Values.links.frontend.baseUrl }}
+          - name: PUBLIC_SITE_SHORT_URL
             value: {{ .Values.links.frontend.shortUrl }}
-          - name: OPENSHOCK_URL
-            value: {{ .Values.links.frontend.domain }}
-          image: ghcr.io/openshock/webui:latest
+          - name: PUBLIC_BACKEND_API_URL
+            value: {{ .Values.links.api.baseUrl }}
+          - name: PUBLIC_GATEWAY_CSP_WILDCARD
+            value: {{ .Values.links.frontend.cspWildcard }}
+          - name: PUBLIC_SITE_NAME
+            value: {{ .Values.frontend.siteName }}
+          image: ghcr.io/openshock/frontend:latest
           name: frontend
           ports:
             - containerPort: 80
