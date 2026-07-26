@@ -33,7 +33,7 @@ spec:
           image: ghcr.io/openshock/frontend:latest
           name: frontend
           ports:
-            - containerPort: 80
+            - containerPort: 3000
               protocol: TCP
           imagePullPolicy: Always
       restartPolicy: Always

@@ -19,6 +19,7 @@ links:
     baseUrl: https://openshock.local
     cookieDomain: openshock.local
     shortUrl: https://openshock.local
+    cspWildcard: https://*.openshock.local
   api:
     baseUrl: https://api.openshock.local
 
