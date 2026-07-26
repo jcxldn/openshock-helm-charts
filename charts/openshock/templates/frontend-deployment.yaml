@@ -33,4 +33,5 @@ spec:
           ports:
             - containerPort: 80
               protocol: TCP
+          imagePullPolicy: Always
       restartPolicy: Always
